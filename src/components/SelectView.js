@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import "../style/SelectView.css"; // Import CSS file for SelectView component
+import "../style/SelectView.css"; 
 
 const SelectView = ({ onNext, onBack }) => {
   const [selectedView, setSelectedView] = useState("");
 
   const handleNext = () => {
     if (selectedView) {
-      onNext(); // Call the onNext function from props to move to the next step
+      onNext(); 
     }
   };
 
   const handleBack = () => {
-    onBack(); // Call the onBack function from props to move back to the previous step
+    onBack(); 
   };
 
   const handleSelectView = (view) => {

@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import "../style/ManageProjects.css"; // Import CSS file for ManageProjects component
+import "../style/ManageProjects.css"; // 
 
 const ManageProjects = ({ onNext, onBack }) => {
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleNext = () => {
     if (selectedOption) {
-      onNext(); // Call the onNext function from props to move to the next step
+      onNext(); 
     }
   };
 
   const handleBack = () => {
-    onBack(); // Call the onBack function from props to move back to the previous step
+    onBack(); 
   };
 
   const handleSelectOption = (option) => {

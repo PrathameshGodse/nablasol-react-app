@@ -19,7 +19,7 @@ function App() {
   };
 
   const handleBackToLogin = () => {
-    setCurrentStep(1); // Set this to the desired step number
+    setCurrentStep(1); 
   };
 
   return (

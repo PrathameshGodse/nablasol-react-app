@@ -22,11 +22,11 @@ const ProjectType = ({ onNext, onBack }) => {
 
   const handleNext = () => {
     localStorage.setItem("projectTypeData", JSON.stringify(formData));
-    onNext(); // Call the onNext function from props to move to the next step
+    onNext(); 
   };
 
   const handleBack = () => {
-    onBack(); // Call the onBack function from props to move back to the previous step
+    onBack(); 
   };
 
   return (

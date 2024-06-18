@@ -104,7 +104,7 @@ const ProjectType = ({ onNext, onBack }) => {
             <option value="hours">Hours per Person</option>
             <option value="monthly">Monthly Budget</option>
           </select>
-          <input
+          <input 
             type="text"
             name="budgetAmount"
             className="input"

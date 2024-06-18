@@ -1,23 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import StepOne from "./components/CreateProject";
+import StepTwo from "./components/ProjectType";
+import StepThree from "./components/SelectView";
+import StepFour from "./components/ManageProjects";
+import StepFive from "./components/CreateAccount";
+import StepSix from "./components/CreateAccountStep2";
 
 function App() {
+  const [currentStep, setCurrentStep] = useState(1);
+
+  const handleClickNext = () => {
+    setCurrentStep((prevStep) => prevStep + 1);
+  };
+
+  const handleClickBack = () => {
+    setCurrentStep((prevStep) => prevStep - 1);
+  };
+
+  const handleBackToLogin = () => {
+    setCurrentStep(1); // Set this to the desired step number
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-         You changed coode
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {currentStep === 1 && <StepOne onNext={handleClickNext} />}
+      {currentStep === 2 && (
+        <StepTwo onNext={handleClickNext} onBack={handleClickBack} />
+      )}
+      {currentStep === 3 && (
+        <StepThree onNext={handleClickNext} onBack={handleClickBack} />
+      )}
+      {currentStep === 4 && (
+        <StepFour onNext={handleClickNext} onBack={handleClickBack} />
+      )}
+      {currentStep === 5 && (
+        <StepFive onNext={handleClickNext} onBack={handleClickBack} />
+      )}
+      {currentStep === 6 && (
+        <StepSix
+          onNext={handleClickNext}
+          onBack={handleClickBack}
+          onBackToLogin={handleBackToLogin}
+        />
+      )}
     </div>
   );
 }

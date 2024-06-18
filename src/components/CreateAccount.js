@@ -26,7 +26,6 @@ const CreateAccount = ({ onNext, onBack }) => {
     if (!formData.firstName) newErrors.firstName = "First Name is required";
     if (!formData.lastName) newErrors.lastName = "Last Name is required";
     if (!formData.email) newErrors.email = "Email is required";
-
     if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = "Passwords do not match";
     }
@@ -38,12 +37,22 @@ const CreateAccount = ({ onNext, onBack }) => {
   const handleNext = () => {
     if (validate()) {
       localStorage.setItem("formData", JSON.stringify(formData));
-      onNext(); 
+      onNext();
     }
   };
 
   const handleBack = () => {
-    onBack(); // 
+    // Clear form data and errors, but don't validate
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      password: "",
+      confirmPassword: "",
+    });
+    setErrors({});
+    onBack();
   };
 
   return (
@@ -163,7 +172,7 @@ const CreateAccount = ({ onNext, onBack }) => {
               Back to Login
             </button>
             <button type="button" className="next-step" onClick={handleNext}>
-              Next Step
+              Next
             </button>
           </div>
         </form>

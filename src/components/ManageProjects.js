@@ -80,7 +80,7 @@ const ManageProjects = ({ onNext, onBack }) => {
           Back
         </button>
         <button className="next-button" onClick={handleNext}>
-          Next
+          Next 
         </button>
       </div>
       <div className="loader">

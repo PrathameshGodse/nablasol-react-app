@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import '../style/CreateAccountStep2.css'
-const CreateAccountStep2 = () => {
+import "../style/CreateAccountStep2.css";
+
+const CreateAccountStep2 = ({ onNext, onBack, onBackToLogin }) => {
   const [formData, setFormData] = useState({
     brandName: "",
     brandType: "",
@@ -34,13 +35,22 @@ const CreateAccountStep2 = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleNext = (e) => {
     e.preventDefault();
     if (validate()) {
       localStorage.setItem("formData", JSON.stringify(formData));
-      alert("You Are Almost Done!");
-      checkLocalStorage();
+      onNext();
     }
+  };
+
+  const handleBack = (e) => {
+    e.preventDefault();
+    onBack();
+  };
+
+  const handleBackToLogin = (e) => {
+    e.preventDefault();
+    onBackToLogin();
   };
 
   const checkLocalStorage = () => {
@@ -81,7 +91,7 @@ const CreateAccountStep2 = () => {
         <p className="description">
           Please, enter information about your company.
         </p>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleNext}>
           <div className="form-section">
             <h3 className="section-title">GENERAL INFORMATION</h3>
             <div className="form-grid">
@@ -172,11 +182,15 @@ const CreateAccountStep2 = () => {
             </div>
           </div>
           <div className="footer">
-            <a href="#" className="footer-link">
+            <a href="#" className="footer-link" onClick={handleBackToLogin}>
               Back to Login
             </a>
             <div className="footer-buttons">
-              <button type="button" className="previous-button">
+              <button
+                type="button"
+                className="previous-button"
+                onClick={handleBack}
+              >
                 Previous Step
               </button>
               <button type="submit" className="next-button">
@@ -185,7 +199,6 @@ const CreateAccountStep2 = () => {
             </div>
           </div>
         </form>
-        
       </div>
     </div>
   );

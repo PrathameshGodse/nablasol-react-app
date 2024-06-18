@@ -90,7 +90,7 @@ const CreateProject = ({ onNext, onBack }) => {
       </div>
       <div className="footer">
         <button className="text-button" onClick={handleBack}>
-          Back
+          Back 
         </button>
         <button className="primary-button" onClick={handleNext}>
           Next

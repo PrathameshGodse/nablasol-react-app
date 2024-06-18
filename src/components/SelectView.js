@@ -22,7 +22,7 @@ const SelectView = ({ onNext, onBack }) => {
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path
+            <path 
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}

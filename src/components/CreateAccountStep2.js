@@ -12,7 +12,6 @@ const CreateAccountStep2 = ({ onNext, onBack, onBackToLogin }) => {
   });
 
   const [errors, setErrors] = useState({});
-  const [storedData, setStoredData] = useState(null);
 
   const handleChange = (e) => {
     setFormData({
@@ -56,7 +55,7 @@ const CreateAccountStep2 = ({ onNext, onBack, onBackToLogin }) => {
   const checkLocalStorage = () => {
     const savedData = localStorage.getItem("formData");
     if (savedData) {
-      setStoredData(JSON.parse(savedData));
+      setFormData(JSON.parse(savedData));
     }
   };
 
@@ -69,9 +68,9 @@ const CreateAccountStep2 = ({ onNext, onBack, onBackToLogin }) => {
       <div className="container">
         <div className="header">
           <h1 className="title">Create New Account</h1>
-          <a href="#" className="contact-link">
+          <button className="contact-link" onClick={() => {}}>
             Contact Us
-          </a>
+          </button>
         </div>
         <div className="steps">
           <div className="step active">
@@ -182,9 +181,9 @@ const CreateAccountStep2 = ({ onNext, onBack, onBackToLogin }) => {
             </div>
           </div>
           <div className="footer">
-            <a href="#" className="footer-link" onClick={handleBackToLogin}>
+            <button className="footer-link" onClick={handleBackToLogin}>
               Back to Login
-            </a>
+            </button>
             <div className="footer-buttons">
               <button
                 type="button"

@@ -1,15 +1,23 @@
-// src/components/SelectView.js
-import React from "react";
+import React, { useState } from "react";
 import "../style/SelectView.css"; // Import CSS file for SelectView component
 
 const SelectView = ({ onNext, onBack }) => {
+  const [selectedView, setSelectedView] = useState("");
+
   const handleNext = () => {
-    onNext(); // Call the onNext function from props to move to the next step
+    if (selectedView) {
+      onNext(); // Call the onNext function from props to move to the next step
+    }
   };
 
   const handleBack = () => {
     onBack(); // Call the onBack function from props to move back to the previous step
   };
+
+  const handleSelectView = (view) => {
+    setSelectedView(view);
+  };
+
   return (
     <div className="card">
       <div className="header">
@@ -22,7 +30,7 @@ const SelectView = ({ onNext, onBack }) => {
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path 
+            <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
@@ -35,17 +43,25 @@ const SelectView = ({ onNext, onBack }) => {
         You can also customize this view in settings
       </p>
       <div className="view-options">
-        <div className="view-option">
+        <div
+          className={`view-option ${selectedView === "list" ? "selected" : ""}`}
+          onClick={() => handleSelectView("list")}
+        >
           <img
-            src="https://placehold.co/64x64"
+            src="https://fonts.gstatic.com/s/i/materialicons/view_list/v6/24px.svg"
             alt="List view"
             className="view-image"
           />
           <span className="view-label">List</span>
         </div>
-        <div className="view-option selected">
+        <div
+          className={`view-option ${
+            selectedView === "board" ? "selected" : ""
+          }`}
+          onClick={() => handleSelectView("board")}
+        >
           <img
-            src="https://placehold.co/64x64"
+            src="https://fonts.gstatic.com/s/i/materialicons/view_module/v6/24px.svg"
             alt="Board view"
             className="view-image"
           />
@@ -56,7 +72,11 @@ const SelectView = ({ onNext, onBack }) => {
         <button className="back-button" onClick={handleBack}>
           Back
         </button>
-        <button className="next-button" onClick={handleNext}>
+        <button
+          className="next-button"
+          onClick={handleNext}
+          disabled={!selectedView}
+        >
           Next
         </button>
       </div>
